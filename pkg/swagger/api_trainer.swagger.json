@@ -1,0 +1,428 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Training SERVER TRAINER API",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Telegram",
+      "email": "https://t.me/McK03"
+    }
+  },
+  "tags": [
+    {
+      "name": "TrainerV1"
+    }
+  ],
+  "host": "localhost:8080",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/block-client/{clientId}": {
+      "post": {
+        "summary": "ЗАблокировать клиента",
+        "operationId": "TrainerV1_BlockClient",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "trainerId": {
+                  "type": "string",
+                  "format": "int64"
+                },
+                "programId": {
+                  "type": "string",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "TrainerV1"
+        ]
+      }
+    },
+    "/api/block-trainer/{trainerId}": {
+      "post": {
+        "summary": "ЗАблокировать тренера",
+        "operationId": "TrainerV1_BlockTrainer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "trainerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "clientId": {
+                  "type": "string",
+                  "format": "int64"
+                },
+                "programId": {
+                  "type": "string",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "TrainerV1"
+        ]
+      }
+    },
+    "/api/clients-programs/{trainerId}": {
+      "get": {
+        "summary": "Тренеру получить список программ c клиентамами",
+        "operationId": "TrainerV1_GetClientsPrograms",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/trainer_v1GetClientsProgramsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "trainerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainerV1"
+        ]
+      }
+    },
+    "/api/clients-to-allow/{trainerId}": {
+      "get": {
+        "summary": "Получить список клиентов, ожидающих работы",
+        "operationId": "TrainerV1_GetClientsToAllow",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/trainer_v1GetClientsToAllowResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "trainerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainerV1"
+        ]
+      }
+    },
+    "/api/set-program-to-client/{clientId}": {
+      "patch": {
+        "summary": "Добавить программу клиенту",
+        "operationId": "TrainerV1_SetProgramToClient",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "trainerId": {
+                  "type": "string",
+                  "format": "int64"
+                },
+                "programId": {
+                  "type": "string",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "TrainerV1"
+        ]
+      }
+    },
+    "/api/trainers-programs/{clientId}": {
+      "get": {
+        "summary": "Клиенту получить список программ с тренером",
+        "operationId": "TrainerV1_GetProgramsWithTrainers",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/trainer_v1GetProgramsWithTrainersResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainerV1"
+        ]
+      }
+    },
+    "/api/trainers-to-allow/{clientId}": {
+      "get": {
+        "summary": "Получить список тренеров, предлагающих услуги",
+        "operationId": "TrainerV1_GetTrainersToAllow",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/trainer_v1GetTrainersToAllowResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainerV1"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "trainer_v1ClientsTrainingProgram": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "info": {
+          "$ref": "#/definitions/trainer_v1ClientsTrainingProgramInfo"
+        }
+      }
+    },
+    "trainer_v1ClientsTrainingProgramInfo": {
+      "type": "object",
+      "properties": {
+        "programName": {
+          "type": "string"
+        },
+        "client": {
+          "type": "string",
+          "format": "int64"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/trainer_v1Status"
+        }
+      }
+    },
+    "trainer_v1GetClientsProgramsResponse": {
+      "type": "object",
+      "properties": {
+        "clientsPrograms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/trainer_v1ClientsTrainingProgram"
+          }
+        }
+      }
+    },
+    "trainer_v1GetClientsToAllowResponse": {
+      "type": "object",
+      "properties": {
+        "clientId": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "trainer_v1GetProgramsWithTrainersResponse": {
+      "type": "object",
+      "properties": {
+        "trainersPrograms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/trainer_v1ClientsTrainingProgram"
+          }
+        }
+      }
+    },
+    "trainer_v1GetTrainersToAllowResponse": {
+      "type": "object",
+      "properties": {
+        "trainerId": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "trainer_v1Status": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "LOCAl",
+        "MODERING",
+        "PUBLIC"
+      ],
+      "default": "UNKNOWN"
+    }
+  }
+}

@@ -1,0 +1,1369 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Training SERVER API",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Telegram",
+      "email": "https://t.me/McK03"
+    }
+  },
+  "tags": [
+    {
+      "name": "TrainingV1"
+    }
+  ],
+  "host": "localhost:8080",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/program/{id}": {
+      "get": {
+        "summary": "получить одну тренировочную программу",
+        "operationId": "TrainingV1_GetTrainingProgram",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/training_v1GetTrainingProgramResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    },
+    "/api/programs": {
+      "post": {
+        "summary": "создать одну тренировочную программу",
+        "operationId": "TrainingV1_CreateTrainingProgram",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/training_v1CreateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/training_v1CreateTrainingProgramRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      },
+      "patch": {
+        "summary": "обновить одну тренировочную программу",
+        "operationId": "TrainingV1_UpdateTrainingProgram",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/training_v1UpdateTrainingProgramRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    },
+    "/api/programs/add-program-from-public/{programId}": {
+      "post": {
+        "summary": "добавить программу из общего доступа",
+        "operationId": "TrainingV1_AddProgramFromPublic",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "programId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    },
+    "/api/programs/train_day/{id}": {
+      "get": {
+        "summary": "получить один тренировочный день",
+        "operationId": "TrainingV1_GetTrainDay",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/training_v1GetTrainDayResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    },
+    "/api/programs/train_days": {
+      "post": {
+        "summary": "создать один тренировочный день",
+        "operationId": "TrainingV1_CreateTrainDay",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/training_v1CreateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/training_v1CreateTrainDayRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      },
+      "patch": {
+        "summary": "обновить один тренировочный день",
+        "operationId": "TrainingV1_UpdateTrainDay",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/training_v1UpdateTrainDayRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    },
+    "/api/programs/train_days/exercise/{id}": {
+      "get": {
+        "summary": "получить одно упражнение",
+        "operationId": "TrainingV1_GetExercise",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/training_v1GetExerciseResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    },
+    "/api/programs/train_days/exercises": {
+      "post": {
+        "summary": "создать одно упражнение",
+        "operationId": "TrainingV1_CreateExercise",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/training_v1CreateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/training_v1CreateExerciseRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      },
+      "patch": {
+        "summary": "обновить одно упражнение",
+        "operationId": "TrainingV1_UpdateExercise",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/training_v1UpdateExerciseRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    },
+    "/api/programs/train_days/exercises/set/{id}": {
+      "get": {
+        "summary": "получить один подход",
+        "operationId": "TrainingV1_GetSet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/training_v1GetSetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    },
+    "/api/programs/train_days/exercises/sets": {
+      "post": {
+        "summary": "создать один подход",
+        "operationId": "TrainingV1_CreateSet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/training_v1CreateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/training_v1CreateSetRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      },
+      "patch": {
+        "summary": "обновить один подход",
+        "operationId": "TrainingV1_UpdateSet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/training_v1UpdateSetRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    },
+    "/api/programs/train_days/exercises/sets/statistic": {
+      "post": {
+        "summary": "создать статистику по подходу",
+        "operationId": "TrainingV1_CreateStatistic",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/training_v1CreateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/training_v1CreateStatisticRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      },
+      "patch": {
+        "summary": "обновить статистику по подходу",
+        "operationId": "TrainingV1_UpdateStatistic",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/training_v1UpdateStatisticRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    },
+    "/api/programs/train_days/exercises/sets/statistic/{id}": {
+      "get": {
+        "summary": "получить статистику по подходу",
+        "operationId": "TrainingV1_GetStatistic",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/training_v1GetStatisticResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      },
+      "delete": {
+        "summary": "удалить статистику по подходу",
+        "operationId": "TrainingV1_DeleteStatistic",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    },
+    "/api/programs/train_days/exercises/sets/{id}": {
+      "get": {
+        "summary": "получить список подходов",
+        "operationId": "TrainingV1_GetSets",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/training_v1GetSetsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      },
+      "delete": {
+        "summary": "удалить один подход",
+        "operationId": "TrainingV1_DeleteSet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    },
+    "/api/programs/train_days/exercises/{id}": {
+      "get": {
+        "summary": "получить список упражнений",
+        "operationId": "TrainingV1_GetExercises",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/training_v1GetExercisesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      },
+      "delete": {
+        "summary": "удалить одно упражнение",
+        "operationId": "TrainingV1_DeleteExercise",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    },
+    "/api/programs/train_days/{id}": {
+      "get": {
+        "summary": "получить список тренировочных дней",
+        "operationId": "TrainingV1_GetTrainDays",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/training_v1GetTrainDaysResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      },
+      "delete": {
+        "summary": "удалить один тренировочный день",
+        "operationId": "TrainingV1_DeleteTrainDay",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    },
+    "/api/programs/{id}": {
+      "get": {
+        "summary": "получить список тренировочных программ по id пользователя",
+        "operationId": "TrainingV1_GetTrainingPrograms",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/training_v1GetTrainingProgramsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      },
+      "delete": {
+        "summary": "удалить одну тренировочную программу",
+        "operationId": "TrainingV1_DeleteTrainingProgram",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    },
+    "/api/public-programs": {
+      "get": {
+        "summary": "получить список тренировочных программ в общем доступе",
+        "operationId": "TrainingV1_GetPublicTrainingPrograms",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/training_v1GetPublicTrainingProgramsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "TrainingV1"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "training_v1CreateExerciseRequest": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/training_v1ExerciseInfo"
+        }
+      }
+    },
+    "training_v1CreateResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "training_v1CreateSetRequest": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/training_v1SetInfo"
+        }
+      }
+    },
+    "training_v1CreateStatisticRequest": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/training_v1StatisticInfo"
+        }
+      }
+    },
+    "training_v1CreateTrainDayRequest": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/training_v1TrainDayInfo"
+        }
+      }
+    },
+    "training_v1CreateTrainingProgramRequest": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/training_v1TrainingProgramInfo"
+        }
+      }
+    },
+    "training_v1Exercise": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "info": {
+          "$ref": "#/definitions/training_v1ExerciseInfo"
+        }
+      }
+    },
+    "training_v1ExerciseInfo": {
+      "type": "object",
+      "properties": {
+        "exerciseName": {
+          "type": "string"
+        },
+        "dayId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "pictures": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "training_v1GetExerciseResponse": {
+      "type": "object",
+      "properties": {
+        "exercise": {
+          "$ref": "#/definitions/training_v1Exercise"
+        }
+      }
+    },
+    "training_v1GetExercisesResponse": {
+      "type": "object",
+      "properties": {
+        "exercises": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/training_v1Exercise"
+          }
+        }
+      }
+    },
+    "training_v1GetPublicTrainingProgramsResponse": {
+      "type": "object",
+      "properties": {
+        "trainPrograms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/training_v1PublicTrainingProgram"
+          }
+        }
+      }
+    },
+    "training_v1GetSetResponse": {
+      "type": "object",
+      "properties": {
+        "set": {
+          "$ref": "#/definitions/training_v1Set"
+        }
+      }
+    },
+    "training_v1GetSetsResponse": {
+      "type": "object",
+      "properties": {
+        "sets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/training_v1Set"
+          }
+        }
+      }
+    },
+    "training_v1GetStatisticResponse": {
+      "type": "object",
+      "properties": {
+        "statistic": {
+          "$ref": "#/definitions/training_v1Statistic"
+        }
+      }
+    },
+    "training_v1GetTrainDayResponse": {
+      "type": "object",
+      "properties": {
+        "trainDay": {
+          "$ref": "#/definitions/training_v1TrainDay"
+        }
+      }
+    },
+    "training_v1GetTrainDaysResponse": {
+      "type": "object",
+      "properties": {
+        "trainDays": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/training_v1TrainDay"
+          }
+        }
+      }
+    },
+    "training_v1GetTrainingProgramResponse": {
+      "type": "object",
+      "properties": {
+        "trainProgram": {
+          "$ref": "#/definitions/training_v1TrainingProgram"
+        }
+      }
+    },
+    "training_v1GetTrainingProgramsResponse": {
+      "type": "object",
+      "properties": {
+        "trainPrograms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/training_v1TrainingProgram"
+          }
+        }
+      }
+    },
+    "training_v1PublicTrainingProgram": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "info": {
+          "$ref": "#/definitions/training_v1PublicTrainingProgramInfo"
+        }
+      }
+    },
+    "training_v1PublicTrainingProgramInfo": {
+      "type": "object",
+      "properties": {
+        "programName": {
+          "type": "string"
+        },
+        "authorId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "training_v1Set": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "info": {
+          "$ref": "#/definitions/training_v1SetInfo"
+        }
+      }
+    },
+    "training_v1SetInfo": {
+      "type": "object",
+      "properties": {
+        "exerciseId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "weight": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "training_v1Statistic": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "info": {
+          "$ref": "#/definitions/training_v1StatisticInfo"
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "training_v1StatisticInfo": {
+      "type": "object",
+      "properties": {
+        "setId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "exerciseId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "trainDayId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "programId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "weight": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "training_v1Status": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "LOCAl",
+        "MODERING",
+        "PUBLIC"
+      ],
+      "default": "UNKNOWN"
+    },
+    "training_v1TrainDay": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "info": {
+          "$ref": "#/definitions/training_v1TrainDayInfo"
+        }
+      }
+    },
+    "training_v1TrainDayInfo": {
+      "type": "object",
+      "properties": {
+        "dayName": {
+          "type": "string"
+        },
+        "programId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "training_v1TrainingProgram": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "info": {
+          "$ref": "#/definitions/training_v1TrainingProgramInfo"
+        }
+      }
+    },
+    "training_v1TrainingProgramInfo": {
+      "type": "object",
+      "properties": {
+        "programName": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/training_v1Status"
+        }
+      }
+    },
+    "training_v1UpdateExerciseInfo": {
+      "type": "object",
+      "properties": {
+        "exerciseName": {
+          "type": "string"
+        },
+        "pictures": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "training_v1UpdateExerciseRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "info": {
+          "$ref": "#/definitions/training_v1UpdateExerciseInfo"
+        }
+      }
+    },
+    "training_v1UpdateSetInfo": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "weight": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "training_v1UpdateSetRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "info": {
+          "$ref": "#/definitions/training_v1UpdateSetInfo"
+        }
+      }
+    },
+    "training_v1UpdateStatisticInfo": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "weight": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "training_v1UpdateStatisticRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "info": {
+          "$ref": "#/definitions/training_v1UpdateStatisticInfo"
+        }
+      }
+    },
+    "training_v1UpdateTrainDayInfo": {
+      "type": "object",
+      "properties": {
+        "dayName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "training_v1UpdateTrainDayRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "info": {
+          "$ref": "#/definitions/training_v1UpdateTrainDayInfo"
+        }
+      }
+    },
+    "training_v1UpdateTrainingProgramInfo": {
+      "type": "object",
+      "properties": {
+        "programName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "Status": {
+          "$ref": "#/definitions/training_v1Status"
+        }
+      }
+    },
+    "training_v1UpdateTrainingProgramRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "info": {
+          "$ref": "#/definitions/training_v1UpdateTrainingProgramInfo"
+        }
+      }
+    }
+  }
+}
